@@ -17,3 +17,5 @@ EXPOSE 8888/tcp
 # command / entrypoint of container
 ENTRYPOINT ["/bin/bash"]
 CMD [ "./main.sh" ]
+
+HEALTHCHECK CMD netstat -ltnp | grep ":${CF_PORT}" || exit 1
